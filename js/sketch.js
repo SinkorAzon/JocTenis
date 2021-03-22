@@ -15,6 +15,7 @@ function setup() {
   //that can be store in a temporary variable to change parameters
   var myAnimation = ghost.addAnimation('floating', 'assets/player1/.png', 'assets/ghost_standing0007.png');
   var myAnimation = ghost.addAnimation('floating', 'assets/ghost_standing0001.png', 'assets/ghost_standing0007.png');
+  var myAnimation = ghost.addAnimation('floating', 'assets/ghost_standing0001.png', 'assets/ghost_standing0007.png');
   //offX and offY is the distance of animation from the center of the sprite
   //in this case since the animations have different heights i want to adjust
   //the vertical offset to make the transition between floating and moving look better
