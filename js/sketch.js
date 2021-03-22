@@ -1,73 +1,89 @@
-var ghost;
-var hero;
-var asteriskAnimation = loadAnimation('assets/asterisk.png', 'assets/triangle.png', 'assets/square.png', 'assets/cloud.png', 'assets/star.png', 'assets/mess.png', 'assets/monster.png');
-var asterisk;
+const s = ( sketch ) => {
+  var player1;
+  var player2;
+  var ball;
+  var maze;
 
-function setup() {
-  createCanvas(800, 300);
+  sketch.preload = function(){
 
-  //create a sprite and add the 3 animations
-  ghost = createSprite(400, 150, 50, 100);
-  hero = createSprite(400, 150, 50, 100);
-  asterisk = createSprite(200,200,50,100);
-  //label, first frame, last frame
-  //the addAnimation method returns the added animation
-  //that can be store in a temporary variable to change parameters
-  var myAnimation = ghost.addAnimation('floating', 'assets/player1/.png', 'assets/ghost_standing0007.png');
-  var myAnimation = ghost.addAnimation('floating', 'assets/ghost_standing0001.png', 'assets/ghost_standing0007.png');
-  var myAnimation = ghost.addAnimation('floating', 'assets/ghost_standing0001.png', 'assets/ghost_standing0007.png');
-  //offX and offY is the distance of animation from the center of the sprite
-  //in this case since the animations have different heights i want to adjust
-  //the vertical offset to make the transition between floating and moving look better
-  myAnimation.offY = 18;
+  }
 
-  hero.addAnimation('moving', 'assets/player1/attack/tile001.png', 'assets/player1/attack/tile011.png');
-  ghost.addAnimation('moving', 'assets/player2/attack/tile001.png', 'assets/player2/attack/tile007.png');
+  sketch.setup = function(){
+    createCanvas(800, 800);
+    sketch.createObjects();
+    maze = sketch.loadImage('image/mapa.jpg');
+  }
 
-  ghost.addAnimation('spinning', 'assets/ghost_spin0001.png', 'assets/ghost_spin0003.png');
-  ghost.addAnimation('spinning', 'assets/ghost_spin0001.png', 'assets/ghost_spin0003.png');
+  sketch.createObjects = function(){
+    player1 = createSprite(400, 150, 50, 100);
+    player1.addAnimation('moving', 'assets/player1/run/tile000.png', 'assets/player1/run/tile001.png',
+    'assets/player1/run/tile002.png', 'assets/player1/run/tile003.png', 'assets/player1/run/tile004.png',
+    'assets/player1/run/tile005.png', 'assets/player1/run/tile006.png', 'assets/player1/run/tile007.png');
+    player1.addAnimation('impactball', 'assets/player1/attack/tile000.png', 'assets/player1/attack/tile001.png',
+    'assets/player1/attack/tile002.png', 'assets/player1/attack/tile003.png', 'assets/player1/attack/tile004.png',
+    'assets/player1/attack/tile005.png');
+    player1.addAnimation('death', 'assets/player1/death/tile000.png', 'assets/player1/death/tile001.png',
+    'assets/player1/death/tile002.png', 'assets/player1/death/tile003.png', 'assets/player1/death/tile004.png',
+    'assets/player1/death/tile005.png');
 
-  asterisk.addAnimation("asteriskround", asteriskAnimation);
+    player2 = createSprite(400, 150, 50, 100);
+    player2.addAnimation('moving', 'assets/player2/run/tile000.png', 'assets/player2/run/tile001.png',
+    'assets/player2/run/tile002.png', 'assets/player2/run/tile003.png', 'assets/player2/run/tile004.png',
+    'assets/player2/run/tile005.png', 'assets/player2/run/tile006.png', 'assets/player2/run/tile007.png',
+    'assets/player2/run/tile008.png', 'assets/player2/run/tile009.png', 'assets/player2/run/tile010.png',
+    'assets/player2/run/tile011.png');
+    player2.addAnimation('impactball', 'assets/player2/attack/tile000.png', 'assets/player2/attack/tile001.png',
+    'assets/player2/attack/tile002.png', 'assets/player2/attack/tile003.png', 'assets/player2/attack/tile004.png');
+    player2.addAnimation('death', 'assets/player2/death/tile000.png', 'assets/player2/death/tile001.png',
+    'assets/player2/death/tile002.png', 'assets/player2/death/tile003.png', 'assets/player2/death/tile004.png',
+    'assets/player2/death/tile005.png', 'assets/player2/death/tile006.png', 'assets/player2/death/tile007.png',
+    'assets/player2/death/tile008.png', 'assets/player2/death/tile009.png', 'assets/player2/death/tile010.png',
+    'assets/player2/death/tile011.png', 'assets/player2/death/tile012.png', 'assets/player2/death/tile013.png'
+    'assets/player2/death/tile014.png', 'assets/player2/death/tile015.png', 'assets/player2/death/tile016.png'
+    'assets/player2/death/tile017.png');
+
+    ball = createSprite(200,200,50,100);
+    ball.addAnimation('spinning', 'assets/ball/...');
+    ball.addAnimation('moving', 'assets/ball/...');
+    ball.addAnimation('floating', 'assets/ball/...');
+  }
+
+  sketch.draw = function(){
+    sketch.background(255, 255, 255);
+    sketch.accioBall();
+    sketch.movePlayer1();
+    sketch.movePlayer2();
+  }
+
+  sketch.accioBall = function(){
+    if(sketch.mouseX < ball.position.x - 10) {
+      ball.changeAnimation('moving');
+      ball.mirrorX(-1);
+      ball.velocity.x = -2;
+    } else if(sketch.mouseX > ball.position.x + 10) {
+      ball.changeAnimation('moving');
+      ball.mirrorX(1);
+      ball.velocity.x = 2;
+    } else {
+      ball.changeAnimation('floating');
+      ball.velocity.x = 0;
+    }
+
+    if(sketch.mouseIsPressed) {
+      ball.rotation -= 10;
+      ball.changeAnimation('spinning');
+    } else {
+      ball.rotation = 0;
+    }
+  }
+
+  sketch.movePlayer1 = function(){
+
+  }
+
+  sketch.movePlayer2 = function(){
+
+  }
 }
 
-function draw() {
-  background(255, 255, 255);
-
-  asterisk.changeAnimation('asteriskround');
-
-  //if mouse is to the left
-  if(mouseX < ghost.position.x - 10) {
-    ghost.changeAnimation('moving');
-    //flip horizontally
-    ghost.mirrorX(-1);
-    //negative x velocity: move left
-    ghost.velocity.x = -2;
-  } else if(mouseX > ghost.position.x + 10) {
-    ghost.changeAnimation('moving');
-    //unflip
-    ghost.mirrorX(1);
-    ghost.velocity.x = 2;
-  } else {
-    //if close to the mouse, don't move
-    ghost.changeAnimation('floating');
-    ghost.velocity.x = 0;
-  }
-
-  if(mouseIsPressed) {
-    //the rotation is not part of the spinning animation
-    ghost.rotation -= 10;
-    ghost.changeAnimation('spinning');
-  } else {
-    ghost.rotation = 0;
-  }
-  //up and down keys to change the scale
-  //note that scaling the image quality deteriorates
-  //and scaling to a negative value flips the image
-
-  //EXEMPLE DE AUGMENTAR TAMANY I DISMINUIR
-  /*
-  if(keyIsDown(UP_ARROW))
-    ghost.scale += 0.05;
-  if(keyIsDown(DOWN_ARROW))
-    ghost.scale -= 0.05;
-*/
+var myp5 = new p5(s, 'myContainer');
