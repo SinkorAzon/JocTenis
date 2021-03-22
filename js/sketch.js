@@ -1,4 +1,5 @@
 var ghost;
+var hero;
 var asteriskAnimation = loadAnimation('assets/asterisk.png', 'assets/triangle.png', 'assets/square.png', 'assets/cloud.png', 'assets/star.png', 'assets/mess.png', 'assets/monster.png');
 var asterisk;
 
@@ -7,18 +8,22 @@ function setup() {
 
   //create a sprite and add the 3 animations
   ghost = createSprite(400, 150, 50, 100);
+  hero = createSprite(400, 150, 50, 100);
   asterisk = createSprite(200,200,50,100);
   //label, first frame, last frame
   //the addAnimation method returns the added animation
   //that can be store in a temporary variable to change parameters
+  var myAnimation = ghost.addAnimation('floating', 'assets/player1/.png', 'assets/ghost_standing0007.png');
   var myAnimation = ghost.addAnimation('floating', 'assets/ghost_standing0001.png', 'assets/ghost_standing0007.png');
   //offX and offY is the distance of animation from the center of the sprite
   //in this case since the animations have different heights i want to adjust
   //the vertical offset to make the transition between floating and moving look better
   myAnimation.offY = 18;
 
-  ghost.addAnimation('moving', 'assets/ghost_walk0001.png', 'assets/ghost_walk0004.png');
+  hero.addAnimation('moving', 'assets/player1/attack/tile001.png', 'assets/player1/attack/tile011.png');
+  ghost.addAnimation('moving', 'assets/player2/attack/tile001.png', 'assets/player2/attack/tile007.png');
 
+  ghost.addAnimation('spinning', 'assets/ghost_spin0001.png', 'assets/ghost_spin0003.png');
   ghost.addAnimation('spinning', 'assets/ghost_spin0001.png', 'assets/ghost_spin0003.png');
 
   asterisk.addAnimation("asteriskround", asteriskAnimation);
