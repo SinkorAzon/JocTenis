@@ -9,7 +9,7 @@ const s = ( sketch ) => {
   }
 
   sketch.setup = function(){
-    createCanvas(800, 800);
+    sketch.createCanvas(800, 800);
     sketch.createObjects();
     maze = sketch.loadImage('image/mapa.jpg');
   }
@@ -26,7 +26,7 @@ const s = ( sketch ) => {
     'assets/player1/death/tile002.png', 'assets/player1/death/tile003.png', 'assets/player1/death/tile004.png',
     'assets/player1/death/tile005.png');
 
-    player2 = createSprite(400, 150, 50, 100);
+    //player2 = createSprite(400, 150, 50, 100);
     player2.addAnimation('moving', 'assets/player2/run/tile000.png', 'assets/player2/run/tile001.png',
     'assets/player2/run/tile002.png', 'assets/player2/run/tile003.png', 'assets/player2/run/tile004.png',
     'assets/player2/run/tile005.png', 'assets/player2/run/tile006.png', 'assets/player2/run/tile007.png',
@@ -38,14 +38,32 @@ const s = ( sketch ) => {
     'assets/player2/death/tile002.png', 'assets/player2/death/tile003.png', 'assets/player2/death/tile004.png',
     'assets/player2/death/tile005.png', 'assets/player2/death/tile006.png', 'assets/player2/death/tile007.png',
     'assets/player2/death/tile008.png', 'assets/player2/death/tile009.png', 'assets/player2/death/tile010.png',
-    'assets/player2/death/tile011.png', 'assets/player2/death/tile012.png', 'assets/player2/death/tile013.png'
-    'assets/player2/death/tile014.png', 'assets/player2/death/tile015.png', 'assets/player2/death/tile016.png'
+    'assets/player2/death/tile011.png', 'assets/player2/death/tile012.png', 'assets/player2/death/tile013.png',
+    'assets/player2/death/tile014.png', 'assets/player2/death/tile015.png', 'assets/player2/death/tile016.png',
     'assets/player2/death/tile017.png');
 
     ball = createSprite(200,200,50,100);
-    ball.addAnimation('spinning', 'assets/ball/...');
-    ball.addAnimation('moving', 'assets/ball/...');
-    ball.addAnimation('floating', 'assets/ball/...');
+    ball.addAnimation('spinning', 'assets/ball/tile000.png', 'assets/ball/tile001.png',
+    'assets/ball/tile002.png', 'assets/ball/tile003.png', 'assetsball/tile004.png',
+    'assets/ball/tile005.png', 'assets/ball/tile006.png', 'assets/ball/tile007.png',
+    'assets/ball/tile008.png', 'assets/ball/tile009.png', 'assets/ball/tile010.png',
+    'assets/ball/tile011.png', 'assets/ball/tile012.png', 'assets/ball/tile013.png',
+    'assets/ball/tile014.png', 'assets/ball/tile015.png', 'assets/ball/tile016.png',
+    'assets/ball/tile017.png');
+    ball.addAnimation('moving', 'assets/ball/tile000.png', 'assets/ball/tile001.png',
+    'assets/ball/tile002.png', 'assets/ball/tile003.png', 'assetsball/tile004.png',
+    'assets/ball/tile005.png', 'assets/ball/tile006.png', 'assets/ball/tile007.png',
+    'assets/ball/tile008.png', 'assets/ball/tile009.png', 'assets/ball/tile010.png',
+    'assets/ball/tile011.png', 'assets/ball/tile012.png', 'assets/ball/tile013.png',
+    'assets/ball/tile014.png', 'assets/ball/tile015.png', 'assets/ball/tile016.png',
+    'assets/ball/tile017.png');
+    ball.addAnimation('floating', 'assets/ball/tile000.png', 'assets/ball/tile001.png',
+    'assets/ball/tile002.png', 'assets/ball/tile003.png', 'assetsball/tile004.png',
+    'assets/ball/tile005.png', 'assets/ball/tile006.png', 'assets/ball/tile007.png',
+    'assets/ball/tile008.png', 'assets/ball/tile009.png', 'assets/ball/tile010.png',
+    'assets/ball/tile011.png', 'assets/ball/tile012.png', 'assets/ball/tile013.png',
+    'assets/ball/tile014.png', 'assets/ball/tile015.png', 'assets/ball/tile016.png',
+    'assets/ball/tile017.png');
   }
 
   sketch.draw = function(){
