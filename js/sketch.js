@@ -1,21 +1,21 @@
+var player1 = new Player1();
+var player2 = new Player2();
+var ball = new Ball();
+var imageMap;
+
 const s = ( sketch ) => {
-  var player1;
-  var player2;
-  var ball;
-  var maze;
 
   sketch.preload = function(){
-
+    imageMap = sketch.loadImage('image/mapa.jpg');
   }
 
   sketch.setup = function(){
-    sketch.createCanvas(800, 800);
-    sketch.createObjects();
-    maze = sketch.loadImage('image/mapa.jpg');
+    sketch.createCanvas(800, 840);
+    createObjects();
   }
 
-  sketch.createObjects = function(){
-    player1 = createSprite(400, 150, 50, 100);
+  function createObjects(){
+    player1 = sketch.createSprite(400, 790);
     player1.addAnimation('moving', 'assets/player1/run/tile000.png', 'assets/player1/run/tile001.png',
     'assets/player1/run/tile002.png', 'assets/player1/run/tile003.png', 'assets/player1/run/tile004.png',
     'assets/player1/run/tile005.png', 'assets/player1/run/tile006.png', 'assets/player1/run/tile007.png');
@@ -26,7 +26,8 @@ const s = ( sketch ) => {
     'assets/player1/death/tile002.png', 'assets/player1/death/tile003.png', 'assets/player1/death/tile004.png',
     'assets/player1/death/tile005.png');
 
-    //player2 = createSprite(400, 150, 50, 100);
+
+    player2 = sketch.createSprite(400, 50);
     player2.addAnimation('moving', 'assets/player2/run/tile000.png', 'assets/player2/run/tile001.png',
     'assets/player2/run/tile002.png', 'assets/player2/run/tile003.png', 'assets/player2/run/tile004.png',
     'assets/player2/run/tile005.png', 'assets/player2/run/tile006.png', 'assets/player2/run/tile007.png',
@@ -42,23 +43,23 @@ const s = ( sketch ) => {
     'assets/player2/death/tile014.png', 'assets/player2/death/tile015.png', 'assets/player2/death/tile016.png',
     'assets/player2/death/tile017.png');
 
-    ball = createSprite(200,200,50,100);
+    ball = sketch.createSprite(400, 400);
     ball.addAnimation('spinning', 'assets/ball/tile000.png', 'assets/ball/tile001.png',
-    'assets/ball/tile002.png', 'assets/ball/tile003.png', 'assetsball/tile004.png',
+    'assets/ball/tile002.png', 'assets/ball/tile003.png', 'assets/ball/tile004.png',
     'assets/ball/tile005.png', 'assets/ball/tile006.png', 'assets/ball/tile007.png',
     'assets/ball/tile008.png', 'assets/ball/tile009.png', 'assets/ball/tile010.png',
     'assets/ball/tile011.png', 'assets/ball/tile012.png', 'assets/ball/tile013.png',
     'assets/ball/tile014.png', 'assets/ball/tile015.png', 'assets/ball/tile016.png',
     'assets/ball/tile017.png');
     ball.addAnimation('moving', 'assets/ball/tile000.png', 'assets/ball/tile001.png',
-    'assets/ball/tile002.png', 'assets/ball/tile003.png', 'assetsball/tile004.png',
+    'assets/ball/tile002.png', 'assets/ball/tile003.png', 'assets/ball/tile004.png',
     'assets/ball/tile005.png', 'assets/ball/tile006.png', 'assets/ball/tile007.png',
     'assets/ball/tile008.png', 'assets/ball/tile009.png', 'assets/ball/tile010.png',
     'assets/ball/tile011.png', 'assets/ball/tile012.png', 'assets/ball/tile013.png',
     'assets/ball/tile014.png', 'assets/ball/tile015.png', 'assets/ball/tile016.png',
     'assets/ball/tile017.png');
     ball.addAnimation('floating', 'assets/ball/tile000.png', 'assets/ball/tile001.png',
-    'assets/ball/tile002.png', 'assets/ball/tile003.png', 'assetsball/tile004.png',
+    'assets/ball/tile002.png', 'assets/ball/tile003.png', 'assets/ball/tile004.png',
     'assets/ball/tile005.png', 'assets/ball/tile006.png', 'assets/ball/tile007.png',
     'assets/ball/tile008.png', 'assets/ball/tile009.png', 'assets/ball/tile010.png',
     'assets/ball/tile011.png', 'assets/ball/tile012.png', 'assets/ball/tile013.png',
@@ -67,40 +68,39 @@ const s = ( sketch ) => {
   }
 
   sketch.draw = function(){
-    sketch.background(255, 255, 255);
+    sketch.background(imageMap);
     sketch.accioBall();
     sketch.movePlayer1();
     sketch.movePlayer2();
+    sketch.drawSprites();
   }
 
   sketch.accioBall = function(){
-    if(sketch.mouseX < ball.position.x - 10) {
-      ball.changeAnimation('moving');
-      ball.mirrorX(-1);
-      ball.velocity.x = -2;
-    } else if(sketch.mouseX > ball.position.x + 10) {
-      ball.changeAnimation('moving');
-      ball.mirrorX(1);
-      ball.velocity.x = 2;
-    } else {
-      ball.changeAnimation('floating');
-      ball.velocity.x = 0;
-    }
 
-    if(sketch.mouseIsPressed) {
-      ball.rotation -= 10;
-      ball.changeAnimation('spinning');
-    } else {
-      ball.rotation = 0;
-    }
   }
 
   sketch.movePlayer1 = function(){
-
+    if (sketch.keyCode === sketch.LEFT_ARROW) {
+      player1.velocity.x = -2;
+    } else if (sketch.keyCode === sketch.RIGHT_ARROW) {
+      player1.velocity.x = +2;;
+    } else if (sketch.keyCode === sketch.UP_ARROW) {
+      player1.velocity.y = -2;
+    } else if (sketch.keyCode === sketch.DOWN_ARROW) {
+      player1.velocity.y = +2;;
+    }
   }
 
   sketch.movePlayer2 = function(){
-
+    if (sketch.key === "a") {
+      player2.velocity.x = -2;
+    } else if (sketch.key === "d") {
+      player2.velocity.x = +2;;
+    } else if (sketch.key === "w") {
+      player2.velocity.y = -2;
+    } else if (sketch.key === "sdd") {
+      player2.velocity.y = +2;;
+    }
   }
 }
 
