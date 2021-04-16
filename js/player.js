@@ -1,9 +1,12 @@
 export default class Player{
     constructor(strPlayer, sketch){
-      this.velocity = 5;
+      this.speedPlayer = 10;
       this.score = 0;
       if(strPlayer == "player1"){
         this.spritePlayer = sketch.createSprite(400, 790);
+        this.spritePlayer.addAnimation('iddle', 'assets/player1/iddle/tile000.png', 'assets/player1/iddle/tile001.png',
+        'assets/player1/iddle/tile002.png', 'assets/player1/iddle/tile003.png', 'assets/player1/iddle/tile004.png',
+        'assets/player1/iddle/tile005.png', 'assets/player1/iddle/tile006.png', 'assets/player1/iddle/tile007.png');
         this.spritePlayer.addAnimation('moving', 'assets/player1/run/tile000.png', 'assets/player1/run/tile001.png',
         'assets/player1/run/tile002.png', 'assets/player1/run/tile003.png', 'assets/player1/run/tile004.png',
         'assets/player1/run/tile005.png', 'assets/player1/run/tile006.png', 'assets/player1/run/tile007.png');
@@ -16,6 +19,8 @@ export default class Player{
       }
       if(strPlayer == "player2"){
         this.spritePlayer = sketch.createSprite(400, 50);
+        this.spritePlayer.addAnimation('iddle', 'assets/player2/iddle/tile000.png', 'assets/player2/iddle/tile001.png',
+        'assets/player2/iddle/tile002.png', 'assets/player2/iddle/tile003.png');
         this.spritePlayer.addAnimation('moving', 'assets/player2/run/tile000.png', 'assets/player2/run/tile001.png',
         'assets/player2/run/tile002.png', 'assets/player2/run/tile003.png', 'assets/player2/run/tile004.png',
         'assets/player2/run/tile005.png', 'assets/player2/run/tile006.png', 'assets/player2/run/tile007.png',
@@ -34,21 +39,31 @@ export default class Player{
     }
 
     moveLeft(sketch){
-      this.spritePlayer.velocity.x = this.velocity * -1;
-      this.spritePlayer.mirrorX(-1);
+      if(this.spritePlayer.position.x > this.speedPlayer) {
+        this.spritePlayer.position.x -= this.speedPlayer;
+        this.spritePlayer.changeAnimation('moving');
+        this.spritePlayer.mirrorX(-1);
+      }
+    }
+
+    stopMovePlayer(){
+      this.spritePlayer.changeAnimation('iddle');
     }
 
     limitGame(sketch){
       if(this.spritePlayer.position.x <= 55){
-        this.spritePlayer.velocity.x = 0;
+        this.spritePlayer.position.x = 55;
       }
       if(this.spritePlayer.position.x > (sketch.width - 70)){
-        this.spritePlayer.velocity.x = 0;
+        this.spritePlayer.position.x = 730;
       }
     }
 
     moveRight(sketch){
-      this.spritePlayer.velocity.x = this.velocity * 1;
-      this.spritePlayer.mirrorX(1);
+      if(this.spritePlayer.position.x > this.speedPlayer) {
+        this.spritePlayer.position.x += this.speedPlayer;
+        this.spritePlayer.changeAnimation('moving');
+        this.spritePlayer.mirrorX(1);
+      }
     }
 }

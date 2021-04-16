@@ -27,17 +27,24 @@ const s = ( sketch ) => {
     player1.limitGame(sketch);
     player2.limitGame(sketch);
     sketch.drawSprites();
+    movePlayer();
   }
 
-  sketch.keyPressed = function() {
-    if(sketch.keyCode === sketch.LEFT_ARROW) {
+  function movePlayer() {
+    if(sketch.keyIsDown(sketch.LEFT_ARROW)) {
       player1.moveLeft(sketch);
-    } else if(sketch.keyCode === sketch.RIGHT_ARROW) {
+    } else if(sketch.keyIsDown(sketch.RIGHT_ARROW)) {
       player1.moveRight(sketch);
-    } else if(sketch.key == 'a') {
+    } else {
+      player1.stopMovePlayer();
+    }
+
+    if(sketch.keyIsDown(65)) {
       player2.moveLeft(sketch);
-    } else if(sketch.key == 'd') {
+    } else if(sketch.keyIsDown(68)) {
       player2.moveRight(sketch);
+    } else {
+      player2.stopMovePlayer();
     }
   }
 }
