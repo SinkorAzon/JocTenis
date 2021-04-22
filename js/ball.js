@@ -42,7 +42,6 @@ export default class Ball {
 
       if(this.spriteBall.position.y < this.spriteBall.height/2 || this.spriteBall.position.y > sketch.height - this.spriteBall.height/2){
         this.spriteBall.velocity.y *= -1;
-      }
-
+      }  
     }
 }
