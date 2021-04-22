@@ -30,8 +30,6 @@ export default class Ball {
     }
 
     moveBall(sketch){
-      this.x += this.xVelocity;
-      this.y += this.yVelocity;
       this.bounce(sketch);
     }
 
@@ -42,6 +40,10 @@ export default class Ball {
 
       if(this.spriteBall.position.y < this.spriteBall.height/2 || this.spriteBall.position.y > sketch.height - this.spriteBall.height/2){
         this.spriteBall.velocity.y *= -1;
-      }  
+      }
+    }
+
+    bouncePlayer(player){
+      this.spriteBall.bounce(player.spritePlayer);
     }
 }

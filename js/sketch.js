@@ -24,8 +24,11 @@ const s = ( sketch ) => {
   sketch.draw = function(){
     sketch.background(imageMap);
     ball.bounceBorder(sketch);
-    player1.limitGame(sketch);
-    player2.limitGame(sketch);
+    ball.bouncePlayer(player1);
+    ball.bouncePlayer(player2);
+    player1.spritePlayer.debug = sketch.mouseIsPressed;
+    player2.spritePlayer.debug = sketch.mouseIsPressed;
+    ball.spriteBall.debug = sketch.mouseIsPressed;
     sketch.drawSprites();
     movePlayer();
   }
