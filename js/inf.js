@@ -21,9 +21,10 @@ function info(){
 
 function infGame(){
   window.alert(
-      "Manual Tenis.\n" +
+      "Joc Creat per Eric Quintana.\n\n" +
+      "Manual Joc Tenis.\n" +
       "La condició per guanyar es que un dels 2 jugadors arribi\n" +
-      "a 10 punts." +
+      "a 10 punts.\n" +
       "A mesura que entre els 2 jugadors es van pasan la bola, la " +
       "velocita de la bola es veu incrementada."
     );

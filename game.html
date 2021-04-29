@@ -13,8 +13,16 @@
     <script type="module" src="js/sketch.js"></script>
     <script type="module" src="js/status.js"></script>
     <script type="module" scr="js/config.js"></script>
+    <script type="text/javascript" src="js/inf.js"></script>
   </head>
   <body>
+    <div class="btnR">
+      <input type="image" name="returnButton" src="image/return.png" alt="Restart" onclick="window.history.back();">
+    </div>
+    <div class="btnInfo">
+      <input type="image" name="restartButton" src="image/reiniciar.png" alt="Restart" onclick="window.location.reload();">
+      <input type="image" name="infoButton" src="image/settings.png" alt="Info" onclick="infGame();">
+    </div>
     <div id="myContainer"></div>
     <div id="myContainerConfig"><h1>Configuració</h1></div>
     <div id="myContainerStatus"><h1>Estat de Joc</h1></div>
