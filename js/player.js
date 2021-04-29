@@ -1,10 +1,10 @@
 export default class Player{
     constructor(strPlayer, sketch){
       this.speedPlayer = 10;
-      this.score;
+      this.score = 0;
       if(strPlayer == "player1"){
         this.spritePlayer = sketch.createSprite(400, 790);
-        this.spritePlayer.setCollider("rectangle", (this.spritePlayer.width/2 -50), (-this.spritePlayer.height/2 +50), 70, 70);
+        this.spritePlayer.setCollider("rectangle", (this.spritePlayer.width/2 -50), (-this.spritePlayer.height/2 +30), 70, 10);
         this.spritePlayer.addAnimation('iddle', 'assets/player1/iddle/tile000.png', 'assets/player1/iddle/tile001.png',
         'assets/player1/iddle/tile002.png', 'assets/player1/iddle/tile003.png', 'assets/player1/iddle/tile004.png',
         'assets/player1/iddle/tile005.png', 'assets/player1/iddle/tile006.png', 'assets/player1/iddle/tile007.png');
@@ -20,7 +20,7 @@ export default class Player{
       }
       if(strPlayer == "player2"){
         this.spritePlayer = sketch.createSprite(400, 50);
-        this.spritePlayer.setCollider("rectangle", (this.spritePlayer.width/2 -50), (-this.spritePlayer.height/2 +50), 70, 70);
+        this.spritePlayer.setCollider("rectangle", (this.spritePlayer.width/2 -50), (-this.spritePlayer.height/2 +70), 70, 10);
         this.spritePlayer.addAnimation('iddle', 'assets/player2/iddle/tile000.png', 'assets/player2/iddle/tile001.png',
         'assets/player2/iddle/tile002.png', 'assets/player2/iddle/tile003.png');
         this.spritePlayer.addAnimation('moving', 'assets/player2/run/tile000.png', 'assets/player2/run/tile001.png',
@@ -75,11 +75,4 @@ export default class Player{
         this.spritePlayer.mirrorX(1);
       }
     }
-    /*
-    bouncePlayer(ball){
-      if(this.spritePlayer.bounce(ball.spriteBall)){
-        this.spritePlayer.changeAnimation('attack');
-      }
-    }
-    */
 }

@@ -23,7 +23,7 @@ export default class Ball {
       'assets/ball/tile011.png', 'assets/ball/tile012.png', 'assets/ball/tile013.png',
       'assets/ball/tile014.png', 'assets/ball/tile015.png', 'assets/ball/tile016.png',
       'assets/ball/tile017.png');
-      this.spriteBall.maxSpeed = 12;
+      this.spriteBall.maxSpeed = 20;
     }
 
     iniciJoc(sketch){
@@ -47,7 +47,8 @@ export default class Ball {
 
     bouncePlayer(player){
       if(this.spriteBall.bounce(player.spritePlayer)){
-          this.spriteBall.setSpeed(this.spriteBall.getSpeed() * 1.05);
+          this.spriteBall.setSpeed(this.spriteBall.getSpeed() * 1.075);
+          console.log(this.spriteBall.getSpeed());
           //player.spritePlayer.changeAnimation('attack');
       }
     }

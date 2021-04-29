@@ -1,5 +1,6 @@
 import Ball from "/js/ball.js";
 import Player from "/js/player.js";
+import { timeGame } from '/js/status.js';
 
 export var player1;
 export var player2;
@@ -15,7 +16,6 @@ const s = ( sketch ) => {
     player2 = new Player("player2", sketch);
     ball = new Ball(sketch);
   }
-
 
   sketch.setup = function(){
     sketch.createCanvas(800, 840);
@@ -37,7 +37,7 @@ const s = ( sketch ) => {
       sketch.noLoop();
       player1.score = player1.score + 1;
       if(player1.score == 10){
-        reiniciarPartida();
+        playerWin();
       } else {
         reiniciarPunto();
       }
@@ -46,7 +46,7 @@ const s = ( sketch ) => {
       sketch.noLoop();
       player2.score = player2.score + 1;
       if(player2.score == 10){
-        reiniciarPartida();
+        playerWin();
       } else {
         reiniciarPunto();
       }
@@ -72,10 +72,37 @@ const s = ( sketch ) => {
     }
   }
 
+  function playerWin() {
+    var marcador = "[ " + player1.score + " / " + player2.score + " ]";
+    if(player1.score == 10){
+      let miss = "Enhorabona has guanyat Player 1!\nTemps de Joc = " + timeGame + "\nMarcador Final = " + marcador + "\nPrem Ok per tornar a Jugar o Cancel per Sortir.";
+      var continuar = confirm(miss);
+      if(continuar == true){
+        sketch.noLoop();
+        restartGame();
+      } else {
+        window.history.back();
+      }
+    } else if(player2.score == 10) {
+      let miss = "Enhorabona has guanyat Player 2!\nTemps de Joc = " + timeGame + "\nMarcador Final = " + marcador + "\nPrem Ok per tornar a Jugar o Cancel per Sortir.";
+      var continuar = confirm(miss);
+      if(continuar == true){
+        sketch.noLoop();
+        restartGame();
+      } else {
+        window.history.back();
+      }
+    }
+  }
+
   function reiniciarPunto(){
     ball.spriteBall.position.x = 400;
     ball.spriteBall.position.y = 400;
     ball.iniciJoc(sketch);
+  }
+
+  function restartGame(){
+    window.location.reload();
   }
 }
 
