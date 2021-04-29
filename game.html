@@ -24,7 +24,39 @@
       <input type="image" name="infoButton" src="image/settings.png" alt="Info" onclick="infGame();">
     </div>
     <div id="myContainer"></div>
-    <div id="myContainerConfig"><h1>Configuració</h1></div>
+    <div id="myContainerConfig">
+      <h1>Configuració</h1>
+      <br><br>
+      <h3>Numero de Jugadors</h3>
+      <input type="radio" id="player1" name="gender" value="player1" checked>
+      <label for="player1">1 Jugador</label> &nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="radio" id="player2" name="gender" value="player2">
+      <label for="player2">2 Jugadors</label>
+
+      <br><br>
+      <h3>Dificultat</h3>
+      <input type="radio" name="dif" id="easy" value="0">
+      <label for="dif">Mode Easy</label><br>
+      <input type="radio" name="dif" id="stan" value="1" checked>
+      <label for="dif">Mode Normal</label><br>
+      <input type="radio" name="dif" id="hard" value="2">
+      <label for="dif">Mode Standard</label><br>
+      <input type="radio" name="dif" id="hell" value="3">
+      <label for="dif">Mode Hell</label><br>
+
+      <br><br>
+      <h3>Musica fons</h3>
+
+      <br><br>
+      <h3>Canviar Mapa</h3>
+      <input type="radio" name="mapa" id="basic" value="0" checked>
+      <label for="dif">Mapa Basic</label><br>
+      <input type="radio" name="mapa" id="?¿" value="1">
+      <label for="dif">Mapa ?¿</label><br>
+      <input type="radio" name="mapa" id="¿?" value="2">
+      <label for="dif">Mapa ?¿</label><br>
+      
+    </div>
     <div id="myContainerStatus"><h1>Estat de Joc</h1></div>
   </body>
 </html>
