@@ -1,9 +1,10 @@
 import Ball from "/js/ball.js";
 import Player from "/js/player.js";
 
-var player1;
-var player2;
+export var player1;
+export var player2;
 var ball;
+var updtScore;
 var imageMap;
 
 const s = ( sketch ) => {
@@ -22,15 +23,35 @@ const s = ( sketch ) => {
   }
 
   sketch.draw = function(){
+    player1.spritePlayer.debug = sketch.mouseIsPressed;
+    player2.spritePlayer.debug = sketch.mouseIsPressed;
+    ball.spriteBall.debug = sketch.mouseIsPressed;
+
     sketch.background(imageMap);
     ball.bounceBorder(sketch);
     ball.bouncePlayer(player1);
     ball.bouncePlayer(player2);
-    player1.spritePlayer.debug = sketch.mouseIsPressed;
-    player2.spritePlayer.debug = sketch.mouseIsPressed;
-    ball.spriteBall.debug = sketch.mouseIsPressed;
     sketch.drawSprites();
     movePlayer();
+    if(ball.scoreGame(sketch) == 1){
+      sketch.noLoop();
+      player1.score = player1.score + 1;
+      if(player1.score == 10){
+        reiniciarPartida();
+      } else {
+        reiniciarPunto();
+      }
+      sketch.loop();
+    } else if(ball.scoreGame(sketch) == 2){
+      sketch.noLoop();
+      player2.score = player2.score + 1;
+      if(player2.score == 10){
+        reiniciarPartida();
+      } else {
+        reiniciarPunto();
+      }
+      sketch.loop();
+    }
   }
 
   function movePlayer() {
@@ -49,6 +70,12 @@ const s = ( sketch ) => {
     } else {
       player2.stopMovePlayer();
     }
+  }
+
+  function reiniciarPunto(){
+    ball.spriteBall.position.x = 400;
+    ball.spriteBall.position.y = 400;
+    ball.iniciJoc(sketch);
   }
 }
 

@@ -1,6 +1,7 @@
 export default class Ball {
     constructor(sketch){
       this.spriteBall = sketch.createSprite(400, 400);
+      this.spriteBall.setCollider("rectangle", (this.spriteBall.width/2 -50), (-this.spriteBall.width/2 +50), 30, 30);
       this.spriteBall.addAnimation('spinning', 'assets/ball/tile000.png', 'assets/ball/tile001.png',
       'assets/ball/tile002.png', 'assets/ball/tile003.png', 'assets/ball/tile004.png',
       'assets/ball/tile005.png', 'assets/ball/tile006.png', 'assets/ball/tile007.png',
@@ -22,6 +23,7 @@ export default class Ball {
       'assets/ball/tile011.png', 'assets/ball/tile012.png', 'assets/ball/tile013.png',
       'assets/ball/tile014.png', 'assets/ball/tile015.png', 'assets/ball/tile016.png',
       'assets/ball/tile017.png');
+      this.spriteBall.maxSpeed = 12;
     }
 
     iniciJoc(sketch){
@@ -44,6 +46,19 @@ export default class Ball {
     }
 
     bouncePlayer(player){
-      this.spriteBall.bounce(player.spritePlayer);
+      if(this.spriteBall.bounce(player.spritePlayer)){
+          this.spriteBall.setSpeed(this.spriteBall.getSpeed() * 1.05);
+          //player.spritePlayer.changeAnimation('attack');
+      }
+    }
+
+    scoreGame(sketch){
+      if(this.spriteBall.position.y < (0 + this.spriteBall.height/2)){
+        console.log("Point Hero");
+        return 1;
+      } else if(this.spriteBall.position.y > (sketch.height - this.spriteBall.height/2)){
+        console.log("Point Parca");
+        return 2;
+      }
     }
 }

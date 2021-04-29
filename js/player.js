@@ -1,7 +1,7 @@
 export default class Player{
     constructor(strPlayer, sketch){
       this.speedPlayer = 10;
-      this.score = 0;
+      this.score;
       if(strPlayer == "player1"){
         this.spritePlayer = sketch.createSprite(400, 790);
         this.spritePlayer.setCollider("rectangle", (this.spritePlayer.width/2 -50), (-this.spritePlayer.height/2 +50), 70, 70);
@@ -75,4 +75,11 @@ export default class Player{
         this.spritePlayer.mirrorX(1);
       }
     }
+    /*
+    bouncePlayer(ball){
+      if(this.spritePlayer.bounce(ball.spriteBall)){
+        this.spritePlayer.changeAnimation('attack');
+      }
+    }
+    */
 }

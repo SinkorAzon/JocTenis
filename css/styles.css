@@ -1,9 +1,19 @@
 body {
   background-repeat: no-repeat;
   background-position: center;
+
+  background-image: url("/image/bgi.jpg");
+  background-size: 100% 1100px;
 }
 
 #myContainer {
-  margin-top: 5px;
+  margin-top: 50px;
+  margin-left: 30%;
   text-align: center;
+  float: left;
+}
+
+#myContainerStatus {
+  float: right;
+  color: white;
 }
