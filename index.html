@@ -1,20 +1,84 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <script src="js/library/p5.js"></script>
-    <!--<script src="js/library/p5-test.js"></script>-->
-    <script src="js/library/p5.play.js"></script>
-    <!--<script src="js/library/p5.min.js"></script>-->
-    <!--<script src="js/library/p5.pre-min.js"></script>-->
-    <script src="js/library/p5.sound.js"></script>
-    <!--<script src="js/library/p5.sound.min.js"></script>-->
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <script type="module" src="js/sketch.js"></script>
-    <script type="module" src="js/status.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+    <script src="js/inf.js" type="text/javascript"></script>
   </head>
-  <body>
-    <div id="myContainer"> </div>
-    <div id="myContainerStatus"><h1>Estat de Joc</h1></div>
+  <body style="background-image: url('image/bform.png'); background-size: 100% 1300px;">
+    <div class="btnInfo">
+      <input type="image" name="infoButton" src="image/info.webp" alt="Info" onclick="info();">
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-light">
+          <br><h1>Formulari Game</h1><br><br>
+        </div>
+      </div>
+      <form action="game.html" onsubmit="saveUser();">
+        <table class="table text-light">
+          <tr>
+            <th class="text-end"><label for="nom">Nom :</label></th>
+            <td><input type="text" name="nom" id="nom" maxlength="20" size="20" /></td>
+          </tr>
+          <tr>
+            <th class="text-end"><label for="cognoms">Cognoms :</label></th>
+            <td><input type="text" name="cognoms" id="cognoms" maxlength="30" size="30"/></td>
+          </tr>
+          <tr>
+            <th class="text-end"><label for="edat">Edat :</label></th>
+            <td><input type="number" name="edat" id="edat" min="1" max="120" style="width: 5em" /></td>
+          </tr>
+          <tr>
+            <th class="text-end"><label for="nif">NIF :</label></th>
+            <td><input type="text" name="nif" id="nif" maxlength="9" size="9"/></td>
+          </tr>
+          <tr>
+            <th class="text-end"><label for="email">E-mail: :</label></th>
+            <td><input type="text" name="email" id="email" maxlength="30" size="30"/></td>
+          </tr>
+          <tr>
+            <th class="text-end"><label for="provincia">Provincia :</label></th>
+            <td>
+              <select name="provincia" id="provincia">
+                <option value=""></option>
+                <option value="Corunya">La Corunya</option>
+                <option value="Lugo">Lugo</option>
+                <option value="Madrid">Madrid</option>
+                <option value="Barcelona">Barcelona</option>
+                <option value="Valencia">Valencia</option>
+                <option value="Malaga">Malaga</option>
+                <option value="Almeria">Almeria</option>
+                <option value="Girona">Girona</option>
+                <option value="Toledo">Toledo</option>
+                <option value="Cadis">Cadis</option>
+                <option value="Lleida">Lleida</option>
+                <option value="Palmas">Las Palmas</option>
+                <option value="Burgos">Burgos</option>
+                <option value="Valladolid">Valladolid</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th class="text-end"><label for="dataN">Data Naixement :</label></th>
+            <td><input type="date" name="dataN" id="dataN"/></td>
+          </tr>
+          <tr>
+            <th class="text-end"><label for="telefon">Telèfon :</label></th>
+            <td><input type="number" name="telefon" id="telefon" maxlength="9" size="9"/></td>
+          </tr>
+          <tr>
+            <th class="text-end"><label for="hora">Hora de visita :</label></th>
+            <td><input type="time" name="hora" id="hora" /></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="text-center">
+              <input type="reset" name="limpiar" id="button" value="Clear Form" />
+              <input type="submit" name="enviar" id="enviar" value="Redirect to Game" />
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
   </body>
 </html>
