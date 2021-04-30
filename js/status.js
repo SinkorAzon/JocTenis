@@ -1,6 +1,6 @@
 import  { player1, player2 } from '/js/sketch.js';
 
-export var timeGame;
+export var timeGame = 0;
 var fr = 60; //starting FPS
 
 const s = ( sketch ) => {
@@ -11,12 +11,11 @@ const s = ( sketch ) => {
 
   sketch.setup = function(){
     sketch.createCanvas(300, 300);
-    timeGame = 0;
   }
 
   sketch.draw = function(){
     showScore();
-    showtimeGame();
+    showTimeGame();
   }
 
   function showScore(){
@@ -32,7 +31,7 @@ const s = ( sketch ) => {
 
   }
 
-  function showtimeGame(){
+  function showTimeGame(){
     sketch.text('Time :', 20, 120);
     if(player1.score == 10 || player2.score == 10){
       sketch.noLoop();

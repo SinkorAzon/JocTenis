@@ -63,3 +63,11 @@ input[name="returnButton"] {
   left: 0;
   color: white;
 }
+
+#startGame {
+  width:55px;
+  height: 40px;
+  margin-left: 20px;
+  background-color: white;
+  color: black;
+}

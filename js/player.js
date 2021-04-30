@@ -52,6 +52,17 @@ export default class Player{
       }
     }
 
+    moveRight(sketch){
+      if(this.spritePlayer.position.x > (sketch.width - 70)){
+        this.spritePlayer.position.x = 730;
+      }
+      if(this.spritePlayer.position.x > this.speedPlayer) {
+        this.spritePlayer.position.x += this.speedPlayer;
+        this.spritePlayer.changeAnimation('moving');
+        this.spritePlayer.mirrorX(1);
+      }
+    }
+
     stopMovePlayer(){
       this.spritePlayer.changeAnimation('iddle');
     }
@@ -62,17 +73,6 @@ export default class Player{
       }
       if(this.spritePlayer.position.x > (sketch.width - 70)){
         this.spritePlayer.position.x = 730;
-      }
-    }
-
-    moveRight(sketch){
-      if(this.spritePlayer.position.x > (sketch.width - 70)){
-        this.spritePlayer.position.x = 730;
-      }
-      if(this.spritePlayer.position.x > this.speedPlayer) {
-        this.spritePlayer.position.x += this.speedPlayer;
-        this.spritePlayer.changeAnimation('moving');
-        this.spritePlayer.mirrorX(1);
       }
     }
 }
