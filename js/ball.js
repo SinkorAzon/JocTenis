@@ -1,3 +1,5 @@
+import { startArray } from '/js/config.js';
+
 export default class Ball {
     constructor(sketch){
       this.spriteBall = sketch.createSprite(400, 400);
@@ -26,8 +28,18 @@ export default class Ball {
       this.spriteBall.maxSpeed = 20;
     }
 
-    iniciJoc(sketch){
-      let angle = sketch.random(210, 330);
+    startGame(sketch){
+      let angle = sketch.random(60, 140);
+      this.spriteBall.setSpeed(5, angle);
+    }
+
+    startGameAfterPoint(sketch, strPlayer){
+      let angle;
+      if(strPlayer == "player1"){
+        angle = sketch.random(210, 330);
+      } else if(strPlayer == "player2"){
+        angle = sketch.random(60, 140);
+      }
       this.spriteBall.setSpeed(5, angle);
     }
 
