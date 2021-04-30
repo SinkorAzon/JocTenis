@@ -11,6 +11,7 @@ const s = ( sketch ) => {
 
   sketch.setup = function(){
     sketch.createCanvas(300, 300);
+    sketch.frameRate(fr); // Attempt to refresh at starting FPS
   }
 
   sketch.draw = function(){

@@ -25,6 +25,7 @@ const s = ( sketch ) => {
     imageMapBasic = sketch.loadImage('image/mapaBasic.jpg');
     imageMapSpace = sketch.loadImage('image/mapaSpace.jpg');
     imageMapSea = sketch.loadImage('image/mapaSea.jpeg');
+    sketch.soundFormats('mp3', 'ogg');
     mySoundDragonBall = sketch.loadSound('assets/DragonBall.mp3');
     mySoundJurassicPark = sketch.loadSound('assets/JurassicPark.mp3');
     mySoundSuperMario = sketch.loadSound('assets/SuperMario.mp3');
