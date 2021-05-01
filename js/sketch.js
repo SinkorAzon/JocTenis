@@ -12,12 +12,11 @@ var imageMapSea;
 var mySoundDragonBall;
 var mySoundSuperMario;
 var mySoundJurassicPark;
-var nPlayerK = localStorage.getItem("nPlayerKey");
-var difK = localStorage.getItem("difKey");
-var musicK = localStorage.getItem("musicKey");
-var mapaK = localStorage.getItem('mapaKey');
-var startK = localStorage.getItem('startKey');
-var errorK = localStorage.getItem('errorKey');
+//var nPlayerK = localStorage.getItem("nPlayerKey");
+//var difK = localStorage.getItem("difKey");
+//var musicK = localStorage.getItem("musicKey");
+//var mapaK = localStorage.getItem('mapaKey');
+//var errorK = localStorage.getItem('errorKey');
 
 const s = ( sketch ) => {
 
@@ -37,7 +36,6 @@ const s = ( sketch ) => {
   sketch.setup = function(){
     sketch.createCanvas(800, 840);
     ball.startGame(sketch);
-    console.log(nPlayerK + "/" + difK + "/" + musicK + "/" + mapaK + "/" + startK);
   }
 
   sketch.draw = function(){
@@ -45,15 +43,17 @@ const s = ( sketch ) => {
       player1.spritePlayer.debug = sketch.mouseIsPressed;
       player2.spritePlayer.debug = sketch.mouseIsPressed;
       ball.spriteBall.debug = sketch.mouseIsPressed;
-      sketch.drawSprites();
 
       selectMapa();
-      movePlayer(nPlayerK);
-      restartPoint();
+
+      movePlayer(startArray[1]);
+      sketch.drawSprites();
 
       ball.bounceBorder(sketch);
       ball.bouncePlayer(player1);
       ball.bouncePlayer(player2);
+      
+      restartPoint();
     }
   }
 
@@ -172,7 +172,9 @@ const s = ( sketch ) => {
   function playerWin() {
     var marcador = "[ " + player1.score + " / " + player2.score + " ]";
     if(player1.score == 10){
-      let miss = "Enhorabona has guanyat Player 1!\nTemps de Joc = " + timeGame + "\nMarcador Final = " + marcador + "\nPrem Ok per tornar a Jugar o Cancel per Sortir.";
+      let miss = "Enhorabona has guanyat Player 1!\nTemps de Joc = " + timeGame
+      + "\nMarcador Final = " + marcador
+      + "\nPrem Ok per tornar a Jugar o Cancel per Sortir.";
       var continuar = confirm(miss);
       if(continuar == true){
         sketch.noLoop();
@@ -181,7 +183,9 @@ const s = ( sketch ) => {
         window.history.back();
       }
     } else if(player2.score == 10) {
-      let miss = "Enhorabona has guanyat Player 2!\nTemps de Joc = " + timeGame + "\nMarcador Final = " + marcador + "\nPrem Ok per tornar a Jugar o Cancel per Sortir.";
+      let miss = "Enhorabona has guanyat Player 2!\nTemps de Joc = " + timeGame
+      + "\nMarcador Final = " + marcador
+      + "\nPrem Ok per tornar a Jugar o Cancel per Sortir.";
       var continuar = confirm(miss);
       if(continuar == true){
         sketch.noLoop();
