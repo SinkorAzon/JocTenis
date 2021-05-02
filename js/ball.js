@@ -40,10 +40,31 @@ export default class Ball {
       let angle;
       if(strPlayer == "player1"){
         angle = sketch.random(210, 330);
+        while(angle > 260 && angle < 280){
+          angle = sketch.random(210, 330);
+        }
       } else if(strPlayer == "player2"){
         angle = sketch.random(60, 140);
+        while(angle > 80 && angle < 100){
+          angle = sketch.random(210, 330);
+        }
       }
-      this.spriteBall.setSpeed(5, angle);
+
+
+      switch (startArray[2]) {
+        case "1":
+          this.spriteBall.setSpeed(2, angle);
+          break;
+        case "2":
+          this.spriteBall.setSpeed(4, angle);
+          break;
+        case "3":
+          this.spriteBall.setSpeed(6, angle);
+          break;
+        case "4":
+          this.spriteBall.setSpeed(8, angle);
+          break;
+      }
     }
 
     moveBall(sketch){
@@ -67,7 +88,7 @@ export default class Ball {
     }
 
     bouncePlayer(player){
-      if(this.spriteBall.bounce(player.spritePlayer)){
+      if(this.spriteBall.bounce(player.spritePlayer) && this.spriteBall.getSpeed() < 20){
           this.spriteBall.setSpeed(this.spriteBall.getSpeed() * 1.075);
           console.log(this.spriteBall.getSpeed());
           //player.spritePlayer.changeAnimation('attack');
@@ -76,10 +97,8 @@ export default class Ball {
 
     scoreGame(sketch){
       if(this.spriteBall.position.y < (0 + this.spriteBall.height/2)){
-        console.log("Point Hero");
         return 1;
       } else if(this.spriteBall.position.y > (sketch.height - this.spriteBall.height/2)){
-        console.log("Point Parca");
         return 2;
       }
     }
