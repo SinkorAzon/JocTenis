@@ -23,7 +23,7 @@ function settingsGame(){
   var music = document.getElementById("music").value;
   var mapa = document.getElementById("mapa").value;
 
-  
+
     localStorage.setItem('nPlayerKey', nPlayer);
     localStorage.setItem('difKey', dif);
     localStorage.setItem('musicKey', music);

@@ -5,6 +5,7 @@ import { startArray } from '/js/config.js';
 
 export var player1;
 export var player2;
+export var startTime = 0;
 var ball;
 var imageMapBasic;
 var imageMapSpace;
@@ -12,11 +13,6 @@ var imageMapSea;
 var mySoundDragonBall;
 var mySoundSuperMario;
 var mySoundJurassicPark;
-//var nPlayerK = localStorage.getItem("nPlayerKey");
-//var difK = localStorage.getItem("difKey");
-//var musicK = localStorage.getItem("musicKey");
-//var mapaK = localStorage.getItem('mapaKey');
-//var errorK = localStorage.getItem('errorKey');
 
 const s = ( sketch ) => {
 
@@ -40,6 +36,7 @@ const s = ( sketch ) => {
 
   sketch.draw = function(){
     if(startArray[0] == true){
+      startTime = 1;
       player1.spritePlayer.debug = sketch.mouseIsPressed;
       player2.spritePlayer.debug = sketch.mouseIsPressed;
       ball.spriteBall.debug = sketch.mouseIsPressed;
@@ -52,7 +49,7 @@ const s = ( sketch ) => {
       ball.bounceBorder(sketch);
       ball.bouncePlayer(player1);
       ball.bouncePlayer(player2);
-      
+
       restartPoint();
     }
   }
@@ -135,7 +132,7 @@ const s = ( sketch ) => {
         this.spriteBall.setSpeed(6);
         break;
       case "4":
-        this.spriteBall.setSpeed(10);
+        this.spriteBall.setSpeed(8);
         break;
     }
   }
