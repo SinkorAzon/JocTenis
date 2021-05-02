@@ -27,6 +27,7 @@ const s = ( sketch ) => {
     player1 = new Player("player1", sketch);
     player2 = new Player("player2", sketch);
     ball = new Ball(sketch);
+
   }
 
   sketch.setup = function(){
@@ -54,6 +55,24 @@ const s = ( sketch ) => {
 
       restartPoint();
     }
+  }
+
+  function speedGame(){
+      console.log(startArray[2]);
+      switch (startArray[2]) {
+        case "1":
+          return 2;
+          break;
+        case "2":
+          return 4;
+          break;
+        case "3":
+          return 6;
+          break;
+        case "4":
+          return 8;
+          break;
+      }
   }
 
   function selectMusic(){
@@ -122,23 +141,6 @@ const s = ( sketch ) => {
     }
   }
 
-  function configGame(){
-    switch (startArray[1]) {
-      case "1":
-        this.spriteBall.setSpeed(2);
-        break;
-      case "2":
-        this.spriteBall.setSpeed(4);
-        break;
-      case "3":
-        this.spriteBall.setSpeed(6);
-        break;
-      case "4":
-        this.spriteBall.setSpeed(8);
-        break;
-    }
-  }
-
   function movePlayer(nPlayerK) {
     if(nPlayerK == "1"){
       if(sketch.keyIsDown(sketch.LEFT_ARROW)) {
@@ -199,9 +201,9 @@ const s = ( sketch ) => {
     ball.spriteBall.position.x = 400;
     ball.spriteBall.position.y = 400;
     if(i == 1){
-      ball.startGameAfterPoint(sketch, player1);
+      ball.startGameAfterPoint(sketch, "player2");
     } else if(i == 2){
-      ball.startGameAfterPoint(sketch, player2);
+      ball.startGameAfterPoint(sketch, "player1");
     }
   }
 
