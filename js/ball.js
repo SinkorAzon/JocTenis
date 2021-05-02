@@ -1,3 +1,5 @@
+import { startArray } from '/js/config.js';
+
 export default class Ball {
     constructor(sketch){
       this.spriteBall = sketch.createSprite(400, 400);
@@ -16,6 +18,9 @@ export default class Ball {
       'assets/ball/tile011.png', 'assets/ball/tile012.png', 'assets/ball/tile013.png',
       'assets/ball/tile014.png', 'assets/ball/tile015.png', 'assets/ball/tile016.png',
       'assets/ball/tile017.png');
+      this.spriteBall.addAnimation('movingFire', 'assets/fireball/tile000.png',
+      'assets/fireball/tile001.png', 'assets/fireball/tile002.png',
+      'assets/fireball/tile003.png', 'assets/fireball/tile004.png');
       this.spriteBall.addAnimation('floating', 'assets/ball/tile000.png', 'assets/ball/tile001.png',
       'assets/ball/tile002.png', 'assets/ball/tile003.png', 'assets/ball/tile004.png',
       'assets/ball/tile005.png', 'assets/ball/tile006.png', 'assets/ball/tile007.png',
@@ -26,8 +31,18 @@ export default class Ball {
       this.spriteBall.maxSpeed = 20;
     }
 
-    iniciJoc(sketch){
-      let angle = sketch.random(210, 330);
+    startGame(sketch){
+      let angle = sketch.random(60, 140);
+      this.spriteBall.setSpeed(5, angle);
+    }
+
+    startGameAfterPoint(sketch, strPlayer){
+      let angle;
+      if(strPlayer == "player1"){
+        angle = sketch.random(210, 330);
+      } else if(strPlayer == "player2"){
+        angle = sketch.random(60, 140);
+      }
       this.spriteBall.setSpeed(5, angle);
     }
 
@@ -42,6 +57,12 @@ export default class Ball {
 
       if(this.spriteBall.position.y < this.spriteBall.height/2 || this.spriteBall.position.y > sketch.height - this.spriteBall.height/2){
         this.spriteBall.velocity.y *= -1;
+      }
+
+      if(this.spriteBall.getSpeed() > 10) {
+        this.spriteBall.changeAnimation('movingFire');
+      } else {
+        this.spriteBall.changeAnimation('moving');
       }
     }
 

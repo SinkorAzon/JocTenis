@@ -1,19 +1,33 @@
-import  { } from '/js/sketch.js';
-import  { } from '/js/status.js';
+export var startArray = false;
+document.getElementById("startGame").onclick = settingsGame;
 
-const s = ( sketch ) => {
-
-  sketch.preload = function(){
-
+function settingsGame(){
+  var nPlayer;
+  if(document.getElementById("player1").checked == true) {
+    nPlayer = document.getElementById("player1").value;
+  } else if(document.getElementById("player2").checked == true) {
+    nPlayer = document.getElementById("player2").value;
   }
 
-  sketch.setup = function(){
-    sketch.createCanvas(300, 300);
+  var dif;
+  if(document.getElementById("easy").checked == true) {
+    dif = document.getElementById("easy").value;
+  } else if(document.getElementById("stan").checked == true) {
+    dif = document.getElementById("stan").value;
+  } else if(document.getElementById("hard").checked == true) {
+    dif = document.getElementById("stan").value;
+  } else if(document.getElementById("hell").checked == true) {
+    dif = document.getElementById("hell").value;
   }
 
-  sketch.draw = function(){
+  var music = document.getElementById("music").value;
+  var mapa = document.getElementById("mapa").value;
 
-  }
+
+    localStorage.setItem('nPlayerKey', nPlayer);
+    localStorage.setItem('difKey', dif);
+    localStorage.setItem('musicKey', music);
+    localStorage.setItem('mapaKey', mapa);
+    startArray = [true, nPlayer, dif, music, mapa];
+
 }
-
-var myp5 = new p5(s, 'myContainerConfig');

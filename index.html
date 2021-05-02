@@ -19,29 +19,43 @@
         <table class="table text-light">
           <tr>
             <th class="text-end"><label for="nom">Nom :</label></th>
-            <td><input type="text" name="nom" id="nom" maxlength="20" size="20" /></td>
+            <td>
+              <input type="text" name="nom" id="nom" maxlength="20" size="20" required/>
+              <div id="errorNom"></div>
+            </td>
           </tr>
           <tr>
             <th class="text-end"><label for="cognoms">Cognoms :</label></th>
-            <td><input type="text" name="cognoms" id="cognoms" maxlength="30" size="30"/></td>
+            <td>
+              <input type="text" name="cognoms" id="cognoms" maxlength="30" size="30" required/>
+              <div id="errorCognom"></div>
+            </td>
           </tr>
           <tr>
             <th class="text-end"><label for="edat">Edat :</label></th>
-            <td><input type="number" name="edat" id="edat" min="1" max="120" style="width: 5em" /></td>
+            <td>
+              <input type="number" name="edat" id="edat" min="0" max="105" style="width: 5em" required/>
+              <div id="errorEdat"></div>
+            </td>
           </tr>
           <tr>
             <th class="text-end"><label for="nif">NIF :</label></th>
-            <td><input type="text" name="nif" id="nif" maxlength="9" size="9"/></td>
+            <td>
+              <input type="text" name="nif" id="nif" maxlength="9" size="12" placeholder="1-9 (8) / A-Z (1)" required/>
+              <div id="errorNif"></div>
+            </td>
           </tr>
           <tr>
             <th class="text-end"><label for="email">E-mail: :</label></th>
-            <td><input type="text" name="email" id="email" maxlength="30" size="30"/></td>
+            <td>
+              <input type="text" name="email" id="email" maxlength="30" size="30" placeholder="Email Address" pattern ="/^[\w-\.]{2,}@([\w-]{2,}\.)+([\w-]{2,4})$/" required/>
+              <div id="errorEmail"></div>
+            </td>
           </tr>
           <tr>
             <th class="text-end"><label for="provincia">Provincia :</label></th>
             <td>
               <select name="provincia" id="provincia">
-                <option value=""></option>
                 <option value="Corunya">La Corunya</option>
                 <option value="Lugo">Lugo</option>
                 <option value="Madrid">Madrid</option>
@@ -52,7 +66,7 @@
                 <option value="Girona">Girona</option>
                 <option value="Toledo">Toledo</option>
                 <option value="Cadis">Cadis</option>
-                <option value="Lleida">Lleida</option>
+                <option value="Lleida" selected>Lleida</option>
                 <option value="Palmas">Las Palmas</option>
                 <option value="Burgos">Burgos</option>
                 <option value="Valladolid">Valladolid</option>
@@ -61,15 +75,24 @@
           </tr>
           <tr>
             <th class="text-end"><label for="dataN">Data Naixement :</label></th>
-            <td><input type="date" name="dataN" id="dataN"/></td>
+            <td>
+              <input type="date" name="dataN" id="dataN" required/>
+              <div id="errorData"></div>
+            </td>
           </tr>
           <tr>
             <th class="text-end"><label for="telefon">Telèfon :</label></th>
-            <td><input type="number" name="telefon" id="telefon" maxlength="9" size="9"/></td>
+            <td>
+              <input type="number" name="telefon" id="telefon" maxlength="9" size="9" required/>
+              <div id="errorTelefon"></div>
+            </td>
           </tr>
           <tr>
             <th class="text-end"><label for="hora">Hora de visita :</label></th>
-            <td><input type="time" name="hora" id="hora" /></td>
+            <td>
+              <input type="time" name="hora" id="hora" required/>
+              <div id="errorHora"></div>
+            </td>
           </tr>
           <tr>
             <td colspan="2" class="text-center">
@@ -78,6 +101,9 @@
             </td>
           </tr>
         </table>
+        <br>
+        <div id="errors"></div>
+        <div id="intents"></div>
       </form>
     </div>
   </body>
