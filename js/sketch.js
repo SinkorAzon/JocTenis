@@ -42,6 +42,8 @@ const s = ( sketch ) => {
       ball.spriteBall.debug = sketch.mouseIsPressed;
 
       selectMapa();
+      //Ho deshabilito porque hem dona error.
+      //selectMusic();
 
       movePlayer(startArray[1]);
       sketch.drawSprites();
@@ -54,7 +56,7 @@ const s = ( sketch ) => {
     }
   }
 
-  function selectmusic(){
+  function selectMusic(){
     switch (startArray[3]) {
       case "1":
         mySoundDragonBall.play();
