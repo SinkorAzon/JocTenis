@@ -1,4 +1,4 @@
-import { startArray } from './js/config.js';
+//import { startArray } from '/js/config.js';
 
 export default class Ball {
     constructor(sketch){
@@ -50,7 +50,7 @@ export default class Ball {
         }
       }
 
-
+      /*
       switch (startArray[2]) {
         case "1":
           this.spriteBall.setSpeed(2, angle);
@@ -64,7 +64,7 @@ export default class Ball {
         case "4":
           this.spriteBall.setSpeed(8, angle);
           break;
-      }
+      }*/
     }
 
     moveBall(sketch){
