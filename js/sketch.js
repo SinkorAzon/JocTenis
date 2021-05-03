@@ -1,5 +1,5 @@
-import Ball from "/js/ball.js";
-import Player from "/js/player.js";
+import Ball from "../js/ball.js";
+import Player from "../js/player.js";
 import { timeGame } from '../js/status.js';
 import { startArray } from '../js/config.js';
 
