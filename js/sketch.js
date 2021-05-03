@@ -43,8 +43,7 @@ const s = ( sketch ) => {
       ball.spriteBall.debug = sketch.mouseIsPressed;
 
       selectMapa();
-      //Ho deshabilito porque hem dona error.
-      //selectMusic();
+      selectMusic();
 
       movePlayer(startArray[1]);
       sketch.drawSprites();
@@ -78,13 +77,19 @@ const s = ( sketch ) => {
   function selectMusic(){
     switch (startArray[3]) {
       case "1":
-        mySoundDragonBall.play();
+        if(!mySoundDragonBall.isPlaying()){
+          mySoundDragonBall.play();
+        }
         break;
       case "2":
-        mySoundJurassicPark.play();
+        if(!mySoundJurassicPark.isPlaying()){
+          mySoundJurassicPark.play();
+        }
         break;
       case "3":
-        mySoundSuperMario.play();
+        if(!mySoundSuperMario.isPlaying()){
+          mySoundSuperMario.play();
+        }
         break;
     }
   }
