@@ -1,4 +1,5 @@
 //import { startArray } from '/js/config.js';
+var difK = localStorage.getItem("difKey");
 
 export default class Ball {
     constructor(sketch){
@@ -50,8 +51,7 @@ export default class Ball {
         }
       }
 
-      /*
-      switch (startArray[2]) {
+      switch (difK) {
         case "1":
           this.spriteBall.setSpeed(2, angle);
           break;
@@ -64,7 +64,7 @@ export default class Ball {
         case "4":
           this.spriteBall.setSpeed(8, angle);
           break;
-      }*/
+      }
     }
 
     moveBall(sketch){
