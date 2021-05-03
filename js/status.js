@@ -1,4 +1,4 @@
-import  { player1, player2, startTime } from 'js/sketch.js';
+import  { player1, player2, startTime } from './js/sketch.js';
 
 export var timeGame = 0;
 var fr = 60; //starting FPS
