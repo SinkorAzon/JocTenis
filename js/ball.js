@@ -1,4 +1,4 @@
-import { startArray } from 'js/config.js';
+import { startArray } from './js/config.js';
 
 export default class Ball {
     constructor(sketch){
